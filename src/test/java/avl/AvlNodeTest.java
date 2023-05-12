@@ -3,11 +3,13 @@ package avl;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
  * Created with IntelliJ IDEA. User: Antonio J. Nebro Date: 09/07/13 Time: 15:29
  */
+@DisplayName("Testing class AvlNode:")
 public class AvlNodeTest {
 
   private AvlNode<Integer> node;
@@ -23,6 +25,7 @@ public class AvlNodeTest {
   }
 
   @Test
+  @DisplayName("setLeft method inserts the child node on the left of the parent node.")
   public void testHasLeft() {
     assertFalse(node.hasLeft(), "testHasLeft");
     AvlNode<Integer> node2 = new AvlNode<Integer>(6);
@@ -31,6 +34,7 @@ public class AvlNodeTest {
   }
 
   @Test
+  @DisplayName("setRight method inserts the child node on the right of the parent node.")
   public void testHasRight() {
     assertFalse(node.hasRight(), "testHasRight");
     AvlNode<Integer> node2 = new AvlNode<Integer>(6);
@@ -39,6 +43,7 @@ public class AvlNodeTest {
   }
 
   @Test
+  @DisplayName("node height is set correctly.")
   public void shouldSetHeight() {
     int expectedHeight = 1000213;
     node.setHeight(expectedHeight);
