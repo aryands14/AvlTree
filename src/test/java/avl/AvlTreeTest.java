@@ -2,6 +2,7 @@ package avl;
 
 import java.util.Comparator;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.*;
 
@@ -743,6 +744,26 @@ public class AvlTreeTest {
 
   }
 
+  @Test
+  @DisplayName("search returns null node when finding non existent element")
+  void testSearchWhenNodeDoesNotExistInTree() {
+    avlTree.insert(1);
+    avlTree.insert(2);
+    avlTree.insert(3);
+    assertThat(avlTree.search(4)).isNull();
+  }
+  @Test
+  @DisplayName("search returns correct node when searching existing node.")
+  void testSearchWhenNodeExistsInTree() {
+    avlTree.insert(1);
+    avlTree.insert(2);
+    avlTree.insert(3);
+    AvlNode<Integer> node = avlTree.search(3);
 
+    Integer expectedValue = 3;
+    Integer actualValue = node.getItem();
+    assertEquals(expectedValue, actualValue);
+    assertNotNull(node);
+  }
 
 }
