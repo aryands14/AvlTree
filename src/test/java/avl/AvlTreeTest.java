@@ -101,7 +101,7 @@ public class AvlTreeTest {
       assertThat(actualValue.getItem()).isEqualTo(node);
     }
 
-    @DisplayName("a different element")
+    @DisplayName("an equals element")
     @Test
     public void testInsertEqualsElement(){
       AvlNode<Integer> root = new AvlNode<Integer>(1);
