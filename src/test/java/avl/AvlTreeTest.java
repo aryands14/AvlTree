@@ -735,10 +735,11 @@ public class AvlTreeTest {
       node = new AvlNode<Integer>(14);
       avlTree.insertAvlNode(node);
 
-      assertEquals(3, avlTree.getTop().getHeight(),"testDeletingTopNode");
-
+      //assertEquals(3, avlTree.getTop().getHeight(),"testDeletingTopNode");
+      assertThat(3).isEqualTo(avlTree.getTop().getHeight());
       avlTree.delete(20);
-      assertEquals(" | 12 | 8 | 4 | 10 | 22 | 14 | 24", avlTree.toString(),"testDeletingTopNode");
+      //assertEquals(" | 12 | 8 | 4 | 10 | 22 | 14 | 24", avlTree.toString(),"testDeletingTopNode");
+      assertThat(" | 12 | 8 | 4 | 10 | 22 | 14 | 24").isEqualTo(avlTree.toString());
     }
 
 
@@ -752,6 +753,13 @@ public class AvlTreeTest {
     avlTree.insert(3);
     assertThat(avlTree.search(4)).isNull();
   }
+
+  @Test
+  @DisplayName("search returns null node when tree is empty")
+  void testSearchOnNullTree() {
+    assertThat(avlTree.search(4)).isNull();
+  }
+
   @Test
   @DisplayName("search returns correct node when searching existing node.")
   void testSearchWhenNodeExistsInTree() {
@@ -762,8 +770,9 @@ public class AvlTreeTest {
 
     Integer expectedValue = 3;
     Integer actualValue = node.getItem();
-    assertEquals(expectedValue, actualValue);
-    assertNotNull(node);
+
+    assertThat(node).isNotNull();
+    assertThat(expectedValue).isEqualTo(actualValue);
   }
 
 }
