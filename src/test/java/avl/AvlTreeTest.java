@@ -57,6 +57,27 @@ public class AvlTreeTest {
   @DisplayName("when inserting")
   public class inserting{
 
+    @DisplayName("a valid element")
+    @Test
+    public void testInsertValidElement(){
+      AvlNode<Integer> node = new AvlNode<>(5);
+      avlTree.insertTop(node);
+
+      AvlNode<Integer> actualValue = avlTree.getTop();
+      assertThat(actualValue).isEqualTo(node);
+    }
+
+    @DisplayName("a invalid element")
+    @Test
+    public void testInsertInvalidElement(){
+      AvlNode<Integer> node = null;
+      avlTree.insertTop(node);
+
+      AvlNode<Integer> actualValue = avlTree.getTop();
+      assertNull(actualValue);
+    }
+
+
     @DisplayName("at the top")
     @Test
     public void testInsertTop() throws Exception {
@@ -65,6 +86,32 @@ public class AvlTreeTest {
       assertEquals( node, avlTree.getTop(), "TestInsertTop");
       String tree = " | 4";
       assertEquals(tree, avlTree.toString(),"TestInsertTop");
+    }
+
+    @DisplayName("a different element")
+    @Test
+    public void testInsertDifferentElement(){
+      AvlNode<Integer> root = new AvlNode<Integer>(1);
+      Integer node = 2;
+
+      avlTree.insertTop(root);
+      avlTree.insert(node);
+
+      AvlNode<Integer> actualValue = avlTree.findSuccessor(root);
+      assertThat(actualValue.getItem()).isEqualTo(node);
+    }
+
+    @DisplayName("an equals element")
+    @Test
+    public void testInsertEqualsElement(){
+      AvlNode<Integer> root = new AvlNode<Integer>(1);
+      Integer node = 1;
+
+      avlTree.insertTop(root);
+      avlTree.insert(node);
+
+      AvlNode<Integer> actualValue = avlTree.findSuccessor(root);
+      assertNull(actualValue);
     }
 
 
